@@ -34,24 +34,24 @@
             }
 
             // Calculate GPA for each subject
-            let bm = getGPA(melayu) * 5.00;
-            let bi = getGPA(inggeris) * 5.00;
-            let mt = getGPA(math) * 5.00;
-            let sn = getGPA(sci) * 5.00;
+            let bm = getGPA(melayu) * 7.00;
+            let bi = getGPA(inggeris) * 7.00;
+            let mt = getGPA(math) * 9.00;
+            let sn = getGPA(sci) * 8.00;
             let rbt = getGPA(reka) * 4.00;
-            let pai = getGPA(islam) * 4.00;
-            let sej = getGPA(sj) * 3.00;
+            let pai = getGPA(islam) * 5.00;
+            let sej = getGPA(sj) * 4.00;
             let geo = getGPA(geog) * 3.00;
 
 
-            let totalSubjects = 34;
+            let totalSubjects = 47;
             let additionalMarks ="";
 
 
             if (!isFormative) {
-                let Ask = getGPA(ask) * 2.00;
+                let Ask = getGPA(ask) * 3.00;
                 let Seni = getGPA(psv) * 2.00;
-                totalSubjects = 38;
+                totalSubjects = 52;
                 additionalMarks = Ask + Seni;
             }
 
