@@ -1,138 +1,271 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator PNG Lower form</title>
-    <script>
-        function calculatePNG(isFormative) {
-            let nama = document.getElementById("nama").value;
-            let melayu = parseFloat(document.getElementById("melayu").value);
-            let inggeris = parseFloat(document.getElementById("inggeris").value);
-            let math = parseFloat(document.getElementById("math").value);
-            let sci = parseFloat(document.getElementById("sci").value);
-            let reka = parseFloat(document.getElementById("reka").value);
-            let islam = parseFloat(document.getElementById("islam").value);
-            let sj = parseFloat(document.getElementById("sj").value);
-            let geog = parseFloat(document.getElementById("geog").value);
-            let ask = isFormative ? null : parseFloat(document.getElementById("ask").value);
-            let psv = isFormative ? null : parseFloat(document.getElementById("psv").value);
-
-            // Helper function to calculate grade
-            function getGPA(score) {
-                if (score >= 80) return 4.00;
-                if (score >= 75) return 3.67;
-                if (score >= 70) return 3.33;
-                if (score >= 65) return 3.00;
-                if (score >= 60) return 2.67;
-                if (score >= 55) return 2.33;
-                if (score >= 50) return 2.00;
-                if (score >= 45) return 1.67;
-                if (score >= 40) return 1.33;
-                if (score >= 35) return 1.00;
-                return 0.00;
-            }
-
-            // Calculate GPA for each subject
-            let bm = getGPA(melayu) * 7.00;
-            let bi = getGPA(inggeris) * 7.00;
-            let mt = getGPA(math) * 9.00;
-            let sn = getGPA(sci) * 8.00;
-            let rbt = getGPA(reka) * 4.00;
-            let pai = getGPA(islam) * 5.00;
-            let sej = getGPA(sj) * 4.00;
-            let geo = getGPA(geog) * 3.00;
-
-
-            let totalSubjects = 47;
-            let additionalMarks ="";
-
-
-            if (!isFormative) {
-                let Ask = getGPA(ask) * 3.00;
-                let Seni = getGPA(psv) * 2.00;
-                totalSubjects = 52;
-                additionalMarks = Ask + Seni;
-            }
-
-            let total = bm + bi + mt + sn + rbt + pai + sej + geo + (additionalMarks || 0);
-            let purata = total / totalSubjects;
-
-            // Display result
-            document.getElementById("result").innerHTML = "PNG anda ialah: " + purata.toFixed(3);
-
-            // Motivational message
-            let message = "";
-            if (purata === 4.00) {
-                message = "Tahniah " + nama + "!, Anda mendapat pointer 4.00. Kekalkan prestasi anda.";
-            } else if (purata >= 3.50) {
-                message = "Tahniah " + nama + "!, Teruskan usaha anda.";
-            } else if (purata >= 3.00) {
-                message = "Anda sudah lakukan yang terbaik, " + nama + "! Cuba Lagi dalam ujian seterusnya.";
-            } else {
-                message = "Jangan putus asa, " + nama + ". Teruskan berusaha dengan lebih gigih.";
-            }
-            document.getElementById("message").innerHTML = message;
+    <title>PNG Calculator - Telah Berpindah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
         }
-    </script>
+
+        body {
+            background: linear-gradient(135deg, #cbdbe5 0%, #a1b4c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Latar belakang abstrak digital (Sisi Kanan) */
+        body::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=600') no-repeat center right;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Kad Kandungan Utama */
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 900px;
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Bahagian Logo Baharu Menggunakan icon.png */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .logo-image {
+            height: 45px; /* Ketinggian logo yang sepadan dengan tulisan */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            color: #0d2c54;
+            margin-left: 12px;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+
+        /* Ikon Anak Panah Bergerak (Bahagian Tengah) */
+        .arrow-icon-container {
+            margin: 20px 0;
+        }
+
+        .arrow-icon {
+            width: 70px; /* Saiz ikon anak panah biru di tengah */
+            height: auto;
+            animation: bounceRight 1s infinite alternate;
+        }
+
+        @keyframes bounceRight {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(15px); }
+        }
+
+        /* Tajuk Utama */
+        h1 {
+            color: #0b1a30;
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Deskripsi teks */
+        .description {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 35px auto;
+        }
+
+        /* Kotak Pautan Baharu */
+        .link-box {
+            background-color: #f0f7fd;
+            border: 1px solid #e1eef9;
+            border-radius: 16px;
+            padding: 35px 25px;
+            margin-bottom: 40px;
+        }
+
+        .url-text {
+            color: #0072bc;
+            font-size: 1.3rem;
+            font-weight: 700;
+            word-break: break-all;
+            margin-bottom: 25px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .url-text:hover {
+            text-decoration: underline;
+        }
+
+        /* Butang Klik Berpindah */
+        .btn-redirect {
+            background: linear-gradient(to right, #ff7e00, #ff6000);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 6px 20px rgba(255, 110, 0, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-redirect:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 110, 0, 0.6);
+            background: linear-gradient(to right, #ff9024, #ff7014);
+        }
+
+        /* Info Penanda Buku & Countdown */
+        .info-text {
+            color: #2d3748;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 25px;
+            line-height: 1.5;
+        }
+
+        .countdown-number {
+            color: #ff6000;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            color: #4a5568;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        footer a {
+            color: #4a5568;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsif untuk paparan Telefon Pintar */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .url-text {
+                font-size: 1rem;
+            }
+            .btn-redirect {
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 0.9rem;
+            }
+            .logo-area {
+                justify-content: center; /* Dipusatkan jika di telefon */
+            }
+        }
+    </style>
 </head>
-<body style="background: linear-gradient(lightblue, lightblue);">
-  <center
-    <h1><img src="MARA.png" style="width:33px;height:33px;">    Kalkulator PNG    <img src="MRSM.png" style="width:38px;height:33px;"></h1>
-    <h3>Lowerform Student</h3>
-    <br>
-    <p>Sila tulis mengikut ejaan yang betul dan tepat❗</p>
+<body>
 
-    <label>Adakah ini Ujian Formatif?</label>
-    <input type="radio" id="formative-no" name="formative" value="Tidak" checked onclick="toggleExtraFields(false)"> Ya
-    <input type="radio" id="formative-yes" name="formative" value="Ya" onclick="toggleExtraFields(true)"> Tidak
+    <div class="container">
+        <div class="logo-area">
+            <img src="Icon.PNG" alt="PNG Calculator Logo" class="logo-image">
+            <div class="logo-text">PNG Calculator</div>
+        </div>
 
-    <br><br>
+        <div class="arrow-icon-container">
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#0072bc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
 
-    <label for="nama">Sila masukkan nama anda:</label>
-    <input type="text" id="nama">
+        <h1>PNG Calculator Telah Berpindah<br>ke Domain Baru!</h1>
 
-    <h3>Masukkan Markah:</h3>
-    <label for="melayu">Bahasa Melayu📚:<br></label>
-    <input type="number" id="melayu"><br>
-    <label for="inggeris">English 📖:<br></label>
-    <input type="number" id="inggeris"><br>
-    <label for="math">Matematik🧮:<br></label>
-    <input type="number" id="math"><br>
-    <label for="sci">Sains🧪:<br></label>
-    <input type="number" id="sci"><br>
-    <label for="reka">RBT🛠️:<br></label>
-    <input type="number" id="reka"><br>
-    <label for="islam">PAI🕌:<br></label>
-    <input type="number" id="islam"><br>
-    <label for="sj">Sejarah📜:<br></label>
-    <input type="number" id="sj"><br>
-    <label for="geog">Geografi🗺️:<br></label>
-    <input type="number" id="geog"><br>
+        <p class="description">
+            Terima kasih kerana melawat PNG Calculator. Laman web rasmi kami kini boleh diakses di alamat baharu untuk pengalaman yang lebih baik dan terkini.
+        </p>
 
-    <!-- These fields will be hidden if it's a formative test -->
-    <div id="extra-fields" style="display:none;">
-        <label for="psv">PSV🎨🖌️:<br></label>
-        <input type="number" id="psv"><br>
-        <label for="ask">PJ⚽:<br></label>
-        <input type="number" id="ask"><br>
+        <div class="link-box">
+            <a href="https://mrsm-mjsc.github.io/MRSM-PNG-Calculator_V2.0/" id="target-link" class="url-text">
+                https://mrsm-mjsc.github.io/MRSM-PNG-Calculator_V2.0/
+            </a>
+            
+            <a href="https://mrsm-mjsc.github.io/MRSM-PNG-Calculator_V2.0/" class="btn-redirect">
+                Klik di sini untuk ke laman web baru
+            </a>
+
+            <p class="info-text">
+                Sila kemas kini penanda buku (bookmark) anda. Anda akan<br>
+                dipindahkan secara automatik dalam masa <span id="countdown" class="countdown-number">10</span> saat...
+            </p>
+        </div>
+
+        <footer>
+            PNG Calculator. <a href="https://mrsm-mjsc.github.io/MRSM-PNG-Calculator_V2.0/contact/index.html">Hubungi Kami</a>
+        </footer>
     </div>
 
-    <br>
-    <button onclick="calculatePNG(document.getElementById('formative-no').checked)">Kira PNG🔎</button>
-
-    <ul><p><small><small>'MJSC Muo'product, Waldann</small></small></p></ul>
-    <h3>Keputusan:</h3>
-    <p id="result"></p>
-    <p id="message"></p>
-
-
     <script>
-        function toggleExtraFields(show) {
-            document.getElementById('extra-fields').style.display = show ? 'block' : 'none';
-        }
+        let seconds = 10;
+        const countdownElement = document.getElementById('countdown');
+        const targetUrl = document.getElementById('target-link').href;
+
+        const interval = setInterval(() => {
+            seconds--;
+            countdownElement.textContent = seconds;
+
+            if (seconds <= 0) {
+                clearInterval(interval);
+                window.location.href = targetUrl; // Berpindah ke URL baharu secara automatik
+            }
+        }, 1000);
     </script>
-  </center>
+
 </body>
-  </html>
-      
+</html>
