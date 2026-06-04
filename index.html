@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* Latar belakang abstrak digital (Sisi Kanan) */
+        
         body::after {
             content: '';
             position: absolute;
@@ -40,7 +40,7 @@
             pointer-events: none;
         }
 
-        /* Kad Kandungan Utama */
+      
         .container {
             background-color: rgba(255, 255, 255, 0.95);
             width: 100%;
@@ -53,7 +53,7 @@
             z-index: 2;
         }
 
-        /* Bahagian Logo Baharu Menggunakan icon.png */
+     
         .logo-area {
             display: flex;
             align-items: center;
@@ -62,7 +62,7 @@
         }
 
         .logo-image {
-            height: 45px; /* Ketinggian logo yang sepadan dengan tulisan */
+            height: 45px; 
             width: auto;
             object-fit: contain;
         }
@@ -75,13 +75,13 @@
             letter-spacing: -0.5px;
         }
 
-        /* Ikon Anak Panah Bergerak (Bahagian Tengah) */
+       
         .arrow-icon-container {
             margin: 20px 0;
         }
 
         .arrow-icon {
-            width: 70px; /* Saiz ikon anak panah biru di tengah */
+            width: 70px; 
             height: auto;
             animation: bounceRight 1s infinite alternate;
         }
@@ -91,7 +91,7 @@
             100% { transform: translateX(15px); }
         }
 
-        /* Tajuk Utama */
+      
         h1 {
             color: #0b1a30;
             font-size: 2.2rem;
@@ -102,7 +102,7 @@
             text-transform: uppercase;
         }
 
-        /* Deskripsi teks */
+      
         .description {
             color: #4a5568;
             font-size: 1rem;
@@ -111,7 +111,7 @@
             margin: 0 auto 35px auto;
         }
 
-        /* Kotak Pautan Baharu */
+      
         .link-box {
             background-color: #f0f7fd;
             border: 1px solid #e1eef9;
@@ -134,7 +134,7 @@
             text-decoration: underline;
         }
 
-        /* Butang Klik Berpindah */
+      
         .btn-redirect {
             background: linear-gradient(to right, #ff7e00, #ff6000);
             color: white;
@@ -157,7 +157,7 @@
             background: linear-gradient(to right, #ff9024, #ff7014);
         }
 
-        /* Info Penanda Buku & Countdown */
+       
         .info-text {
             color: #2d3748;
             font-size: 0.9rem;
@@ -172,7 +172,7 @@
             font-size: 1rem;
         }
 
-        /* Footer */
+      
         footer {
             color: #4a5568;
             font-size: 0.85rem;
@@ -189,7 +189,7 @@
             text-decoration: underline;
         }
 
-        /* Responsif untuk paparan Telefon Pintar */
+       
         @media (max-width: 600px) {
             .container {
                 padding: 30px 20px;
@@ -206,7 +206,7 @@
                 font-size: 0.9rem;
             }
             .logo-area {
-                justify-content: center; /* Dipusatkan jika di telefon */
+                justify-content: center;
             }
         }
     </style>
@@ -225,10 +225,10 @@
             </svg>
         </div>
 
-        <h1>PNG Calculator Telah Berpindah<br>ke Domain Baru!</h1>
+        <h1>PNG Calculator Telah Berpindah<br>ke Website Baru!</h1>
 
         <p class="description">
-            Terima kasih kerana melawat PNG Calculator. Laman web rasmi kami kini boleh diakses di alamat baharu untuk pengalaman yang lebih baik dan terkini.
+            Terima kasih kerana melawat PNG Calculator. Laman web baharu kami kini boleh diakses di pautan baharu untuk pengalaman yang lebih baik dan terkini.
         </p>
 
         <div class="link-box">
@@ -241,13 +241,13 @@
             </a>
 
             <p class="info-text">
-                Sila kemas kini penanda buku (bookmark) anda. Anda akan<br>
+                 Anda akan<br>
                 dipindahkan secara automatik dalam masa <span id="countdown" class="countdown-number">10</span> saat...
             </p>
         </div>
 
         <footer>
-            PNG Calculator. <a href="https://mrsm-mjsc.github.io/MRSM-PNG-Calculator_V2.0/contact/index.html">Hubungi Kami</a>
+            <a href="https://mrsm-mjsc.github.io/MRSM-PNG-Calculator_V2.0/">PNG Calculator</a>. <a href="https://mrsm-mjsc.github.io/MRSM-PNG-Calculator_V2.0/contact/index.html">Hubungi Kami</a>
         </footer>
     </div>
 
@@ -262,7 +262,7 @@
 
             if (seconds <= 0) {
                 clearInterval(interval);
-                window.location.href = targetUrl; // Berpindah ke URL baharu secara automatik
+                window.location.href = targetUrl; 
             }
         }, 1000);
     </script>
